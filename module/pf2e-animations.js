@@ -283,6 +283,24 @@ pf2eAnimations.hooks.updateItem = Hooks.on("updateItem", (data, changes) => {
   Hooks.call("pf2eAnimations.equipOrInvestItem", status, data);
 });
 
+// Remove the PF2e Animations Dummy NPC folder, unless the debug mode is on AND the user is a GM.
+pf2eAnimations.hooks.renderActorDirectory = Hooks.on(
+  "renderActorDirectory",
+  (app, html, data) => {
+    if (!(game.user.isGM && game.settings.get("pf2e-jb2a-macros", "debug"))) {
+	  const $html = html instanceof jQuery ? html : $(html);
+      const folder = $html.find(
+        `.folder[data-folder-id="${
+          game.folders.get(
+            game.settings.get("pf2e-jb2a-macros", "dummyNPCId-folder")
+          )?.id
+        }"]`
+      );
+      folder.remove();
+    }
+  }
+);
+
 // Create a hook for metadata modification menu.
 pf2eAnimations.hooks.AutomatedAnimations = {};
 pf2eAnimations.hooks.AutomatedAnimations.metaData = Hooks.on(
@@ -940,5 +958,6 @@ pf2eAnimations.screenshake = function screenshake({
 };
 
 self.pf2eAnimations = pf2eAnimations;
+
 
 
