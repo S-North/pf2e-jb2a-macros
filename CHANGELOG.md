@@ -1,3 +1,6 @@
+# Version 2.19.2
+- Fix the error in console about html.find (Thanks @Razytos!)
+
 # Version 2.19.1
 - Fix Harm and Heal healing people by the power of duplication.
 
@@ -943,5 +946,6 @@
 - Fixed Release Workflow.
 
 # Version 1.0.0 - Initialization
+
 
 
