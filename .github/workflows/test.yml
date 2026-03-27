@@ -22,5 +22,8 @@ jobs:
       - name: Install Dependencies
         run: npm install @actions/core
 
+      - name: Combine Animation Files
+        run: node ./scripts/combine-animations.mjs
+
       - name: Test
         run: node .github/check-autorec.js
