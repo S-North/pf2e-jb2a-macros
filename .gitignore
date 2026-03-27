@@ -17,3 +17,4 @@ my-app
 *.zip
 
 packs/macros/
+autorec.json
