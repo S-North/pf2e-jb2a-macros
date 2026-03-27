@@ -1,3 +1,10 @@
+# Version 2.20.0
+- Added SF2e Compatibility to the module.json
+- Reworked how the module is built to make it easier to contribute. (Thanks @ChasarooniZ!)
+  - There are now `split` and `combine` scripts to help splitting autorec.json files and recombining them into usable files for A-A.
+- Added the giant body of animations by @runiclibrarian on Discord. Thank you so much!
+- Added a `fix` script to automatically add metadata to animations that are missing it.
+
 # Version 2.19.2
 - Fix the error in console about html.find (Thanks @Razytos!)
 
