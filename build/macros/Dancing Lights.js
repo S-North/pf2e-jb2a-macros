@@ -7,7 +7,7 @@ if (!game.modules.get("foundry-summons")?.active) {
 }
 
 const dancingLight = await fromUuid(
-  "Compendium.pf2e-jb2a-macros.Actors.teCoIt8sjArsIl4D"
+  `Compendium.pf2e-jb2a-macros.${game.system.id}-actors.teCoIt8sjArsIl4D`
 )
 const dancingLightObj = { ...dancingLight.toObject(), uuid: dancingLight.uuid }
 

@@ -133,11 +133,11 @@ if (args[0] !== "off") {
     .play();
 
   // Store original data on the token for later use
-  tokenD.document.setFlag("pf2e", "originalData", originalData);
+  tokenD.document.setFlag(game.system.id, "originalData", originalData);
 
 } else if (args[0] === "off") {
   // Retrieve original token data
-  const originalData = tokenD.document.getFlag("pf2e", "originalData");
+  const originalData = tokenD.document.getFlag(game.system.id, "originalData");
 
   Sequencer.EffectManager.endEffects({
     origin: "Humanoid Form",
@@ -158,6 +158,6 @@ if (args[0] !== "off") {
     });
 
     // Remove the flag after reverting
-    tokenD.document.unsetFlag("pf2e", "originalData");
+    tokenD.document.unsetFlag(game.system.id, "originalData");
   }
 }

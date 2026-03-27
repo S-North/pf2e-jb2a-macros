@@ -1,3 +1,7 @@
+# Version 2.20.1
+- Moved settings.js to the top of module.json esmodules.
+- Fixed sf2e compatibility.
+
 # Version 2.20.0
 - Added SF2e Compatibility to the module.json
 - Reworked how the module is built to make it easier to contribute. (Thanks @ChasarooniZ!)

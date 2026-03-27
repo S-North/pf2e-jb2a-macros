@@ -6,8 +6,8 @@ pf2eAnimations.hooks = {};
 pf2eAnimations.hooks.ready = Hooks.once("ready", () => {
   console.log(
     "PF2e Animations v" +
-      game.modules.get("pf2e-jb2a-macros").version +
-      " loaded."
+    game.modules.get("pf2e-jb2a-macros").version +
+    " loaded."
   );
   // Warn if no JB2A is found.
   if (
@@ -104,15 +104,15 @@ pf2eAnimations.hooks.ready = Hooks.once("ready", () => {
 								${game.i18n.localize("pf2e-jb2a-macros.welcomeMessage.settingsButton")}
 							</button>
 							<p style="text-align: center; margin: 0; margin-top: 5px;"><i>${game.i18n.localize(
-                "pf2e-jb2a-macros.welcomeMessage.footer"
-              )}</i></p>
+        "pf2e-jb2a-macros.welcomeMessage.footer"
+      )}</i></p>
 						</div>`,
     });
   }
 
   // GM-Only stuff.
   if (!game.user.isGM) return;
-  if (game.settings.get("pf2e", "tokens.autoscale"))
+  if (game.settings.get(game.system.id, "tokens.autoscale"))
     game.settings.set("pf2e-jb2a-macros", "smallTokenScale", 0.8);
   if (!game.modules.get("tokenmagic")?.active)
     game.settings.set("pf2e-jb2a-macros", "tmfx", false);
@@ -137,7 +137,7 @@ pf2eAnimations.hooks.createChatMessage = Hooks.on(
   async (data) => {
     if (game.user.id !== data.author.id) return;
     let targets =
-      data?.flags?.pf2e?.target?.token ?? Array.from(game.user.targets);
+      data?.flags?.pf2e?.target?.token ?? data?.flags?.sf2e?.target?.token ?? Array.from(game.user.targets);
     targets = [targets].flat();
     let token = data.token ?? canvas.tokens.controlled[0];
     let flavor = data.flavor ?? null;
@@ -168,12 +168,13 @@ pf2eAnimations.hooks.createChatMessage = Hooks.on(
     }
     // Attack Matches
     if (
-      data.flags.pf2e?.context?.type === "attack-roll" &&
+      (data.flags.pf2e?.context?.type === "attack-roll" ||
+        data.flags.sf2e?.context?.type === "attack-roll") &&
       !game.settings.get("pf2e-jb2a-macros", "disableHitAnims")
     ) {
       const degreeOfSuccess =
         pf2eAnimations.degreeOfSuccessWithRerollHandling(data);
-      const pack = game.packs.get("pf2e-jb2a-macros.Actions");
+      const pack = game.packs.get(`pf2e-jb2a-macros.${game.system.id}-actions`);
       if (!pack)
         ui.notifications.error(
           `PF2e Animations | ${pf2eAnimations.localize(
@@ -278,8 +279,8 @@ pf2eAnimations.hooks.updateItem = Hooks.on("updateItem", (data, changes) => {
   const status = data.isInvested
     ? "invested"
     : data.isEquipped
-    ? "equipped"
-    : false;
+      ? "equipped"
+      : false;
   Hooks.call("pf2eAnimations.equipOrInvestItem", status, data);
 });
 
@@ -288,12 +289,11 @@ pf2eAnimations.hooks.renderActorDirectory = Hooks.on(
   "renderActorDirectory",
   (app, html, data) => {
     if (!(game.user.isGM && game.settings.get("pf2e-jb2a-macros", "debug"))) {
-	  const $html = html instanceof jQuery ? html : $(html);
+      const $html = html instanceof jQuery ? html : $(html);
       const folder = $html.find(
-        `.folder[data-folder-id="${
-          game.folders.get(
-            game.settings.get("pf2e-jb2a-macros", "dummyNPCId-folder")
-          )?.id
+        `.folder[data-folder-id="${game.folders.get(
+          game.settings.get("pf2e-jb2a-macros", "dummyNPCId-folder")
+        )?.id
         }"]`
       );
       folder.remove();
@@ -426,8 +426,7 @@ pf2eAnimations.hooks.AutomatedAnimations.metaData = Hooks.on(
       );
     } else if (metaData.name === "PF2e Animations") {
       ui.notifications.notify(
-        `${metaData.name} (v${metaData.moduleVersion}) | Animation Version: ${
-          metaData.version
+        `${metaData.name} (v${metaData.moduleVersion}) | Animation Version: ${metaData.version
         }<hr>${pf2eAnimations.localize(
           "pf2e-jb2a-macros.notifications.metaData"
         )}`
@@ -519,12 +518,11 @@ pf2eAnimations.hooks.foundrySummonsWrapper = Hooks.on(
       }
 
       getLamp(color, isThumb) {
-        return `modules/${
-          game.modules.get("jb2a_patreon") ? "jb2a_patreon" : "JB2A_DnD5e"
-        }/Library/Cantrip/Dancing_Lights/DancingLights_01_${color.replaceAll(
-          "-",
-          ""
-        )}_${isThumb ? "Thumb.webp" : "200x200.webm"}`;
+        return `modules/${game.modules.get("jb2a_patreon") ? "jb2a_patreon" : "JB2A_DnD5e"
+          }/Library/Cantrip/Dancing_Lights/DancingLights_01_${color.replaceAll(
+            "-",
+            ""
+          )}_${isThumb ? "Thumb.webp" : "200x200.webm"}`;
       }
 
       async loadDocument() {
@@ -596,10 +594,10 @@ pf2eAnimations.runMacro = async function runJB2Apf2eMacro(
     } else {
       ui.notifications.error(
         "PF2e Animations | Macro " +
-          macroName +
-          " not found in " +
-          compendiumName +
-          "."
+        macroName +
+        " not found in " +
+        compendiumName +
+        "."
       );
     }
   } else {
@@ -612,7 +610,7 @@ pf2eAnimations.runMacro = async function runJB2Apf2eMacro(
 // As above @ xdy.
 pf2eAnimations.degreeOfSuccessWithRerollHandling =
   function degreeOfSuccessWithRerollHandling(message) {
-    const flags = message.flags.pf2e;
+    const flags = message.flags.pf2e || message.flags.sf2e;
     let degreeOfSuccess = flags.context?.outcome ?? "";
     if (flags?.context?.isReroll) {
       const match = message.flavor?.match('Result: <span .*? class="(.*?)"');
@@ -630,7 +628,7 @@ pf2eAnimations.degreeOfSuccessWithRerollHandling =
  */
 pf2eAnimations.macroHelpers = function vauxsMacroHelpers(
   args = [],
-  _callback = () => {}
+  _callback = () => { }
 ) {
   pf2eAnimations.debug("Vaux's Macro Helpers | Args", args);
   let token = args[1]?.sourceToken ?? canvas.tokens.controlled[0];
@@ -721,14 +719,14 @@ pf2eAnimations.alignmentStringToTraits = function alignmentStringToTraits(
         a === "L"
           ? "C"
           : a === "C"
-          ? "L"
-          : a === "G"
-          ? "E"
-          : a === "E"
-          ? "G"
-          : a === "N"
-          ? ""
-          : a
+            ? "L"
+            : a === "G"
+              ? "E"
+              : a === "E"
+                ? "G"
+                : a === "N"
+                  ? ""
+                  : a
       )
       .join("");
   }
@@ -769,7 +767,7 @@ pf2eAnimations.crosshairs = async function crosshairs(
   if (!CONST.WALL_RESTRICTION_TYPES.includes(opts.noCollisionType)) {
     throw new Error(
       "A valid wall restriction type is required for testCollision. Passed " +
-        opts.noCollisionType
+      opts.noCollisionType
     );
   }
 
@@ -840,7 +838,7 @@ pf2eAnimations.crosshairs = async function crosshairs(
           distance > opts.range ||
           (opts.noCollision
             ? canvas.walls.checkCollision(ray, { type: opts.noCollisionType })
-                .length
+              .length
             : false)
         ) {
           crosshairs.icon = "icons/svg/hazard.svg";
@@ -904,7 +902,7 @@ pf2eAnimations.crosshairs = async function crosshairs(
   if (location.flags["pf2e-jb2a-macros"]?.outOfRange === "outOfRange") {
     ui.notifications.error(
       "PF2e Animations | " +
-        pf2eAnimations.localize("pf2e-jb2a-macros.notifications.outOfRange")
+      pf2eAnimations.localize("pf2e-jb2a-macros.notifications.outOfRange")
     );
     location = { cancelled: true };
   }

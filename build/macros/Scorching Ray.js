@@ -17,7 +17,7 @@ if (!tokenD) {
 let targetDialogue = []
 let rayCount = []
 
-if (game.system.id === "pf2e") {
+if (game.system.id === "pf2e" || game.system.id === "sf2e") {
   for (let i of targets.keys()) {
     rayCount.push(1)
   }

@@ -8,7 +8,7 @@ if (args?.length === 0) {
     return ui.notifications.error(message)
   }
 
-  const ITEM_UUID = "Compendium.pf2e-jb2a-macros.Actions.slQlwROqkytVGKKk" // Action Counter
+  const ITEM_UUID = `Compendium.pf2e-jb2a-macros.${game.system.id}-actions.slQlwROqkytVGKKk` // Action Counter
   const source = (await fromUuid(ITEM_UUID)).toObject()
   source.flags = mergeObject(source.flags ?? {}, {
     core: { sourceId: ITEM_UUID },

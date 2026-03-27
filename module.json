@@ -56,9 +56,9 @@
         "verified": "13"
     },
     "esmodules": [
+        "module/settings.js",
         "module/pf2e-animations.js",
         "module/sequencer-extensions.js",
-        "module/settings.js",
         "module/updateMenu.js",
         "module/blacklistMenu.js",
         "module/modifiers-matter.js"
@@ -74,8 +74,10 @@
             "color": "#6f1c17",
             "packs": [
                 "Macros",
-                "Actors",
-                "Actions"
+                "pf2e-actors",
+                "pf2e-actions",
+                "sf2e-Actors",
+                "sf2e-Actions"
             ]
         }
     ],
@@ -83,16 +85,15 @@
         {
             "label": "PF2e Animation Macros",
             "name": "Macros",
-            "path": "packs/macros.db",
-            "system": "pf2e",
+            "path": "packs/macros",
             "type": "Macro",
             "private": false,
             "flags": {}
         },
         {
             "label": "PF2e Animation Actors",
-            "name": "Actors",
-            "path": "packs/actors.db",
+            "name": "pf2e-actors",
+            "path": "packs/actors",
             "system": "pf2e",
             "type": "Actor",
             "private": false,
@@ -100,9 +101,27 @@
         },
         {
             "label": "PF2e Animation Items",
-            "name": "Actions",
-            "path": "packs/actions.db",
+            "name": "pf2e-actions",
+            "path": "packs/actions",
             "system": "pf2e",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "label": "SF2e Animation Actors",
+            "name": "sf2e-actors",
+            "path": "packs/sf2e-actors",
+            "system": "sf2e",
+            "type": "Actor",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "label": "SF2e Animation Items",
+            "name": "sf2e-actions",
+            "path": "packs/sf2e-actions",
+            "system": "sf2e",
             "type": "Item",
             "private": false,
             "flags": {}
