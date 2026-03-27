@@ -1,7 +1,7 @@
-var fs = require('fs');
-var core = require('@actions/core');
+import { readFile } from 'fs';
+import { error, setFailed } from '@actions/core';
 
-fs.readFile("module/autorec.json", function (err, data) {
+readFile("module/autorec.json", function (err, data) {
     if (err) {
         console.log("Error: " + err);
         process.exit(1);
@@ -9,7 +9,7 @@ fs.readFile("module/autorec.json", function (err, data) {
 
     var json = JSON.parse(data);
     if (json.length == 0) {
-        core.error("Error: autorec.json is empty?!");
+        error("Error: autorec.json is empty?!");
         process.exit(1);
     }
 
@@ -20,10 +20,10 @@ fs.readFile("module/autorec.json", function (err, data) {
             array.filter(function (item) {
                 if (item.metaData == null || Object.keys(item.metaData).length == 0) {
                     passed = false
-                    core.error("Error: autorec.json contains an entry without metaData: " + item.label + ", id: " + item.id);
+                    error("Error: autorec.json contains an entry without metaData: " + item.label + ", id: " + item.id);
                 } else if (item.metaData.name == null || isNaN(item.metaData.version)) {
                     passed = false
-                    core.error("Error: autorec.json contains an entry with wrong metaData: " + item.label + ", id: " + item.id);
+                    error("Error: autorec.json contains an entry with wrong metaData: " + item.label + ", id: " + item.id);
                 }
             });
         }
@@ -33,7 +33,7 @@ fs.readFile("module/autorec.json", function (err, data) {
         console.log("autorec.json is valid.")
         process.exit(0)
     } else {
-        core.setFailed("autorec.json is invalid.")
+        setFailed("autorec.json is invalid.")
         process.exit(1)
     }
 })

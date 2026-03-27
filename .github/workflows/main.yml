@@ -22,7 +22,7 @@ jobs:
 
       # Combine individual animations files into a single file
       - name: Combine Animation Files
-        run: node ./scripts/combine-animations.mjs
+        run: npm run combine
 
       # get part of the tag after the `v`
       - name: Extract tag version number
