@@ -77,6 +77,6 @@ if (passed) {
     console.log(`All ${files.length} animation files are valid.`);
     process.exit(0);
 } else {
-    setFailed(`${errorCount} file(s) have validation errors.`);
+    setFailed(`${errorCount} out of ${files.length} files have validation errors.`);
     process.exit(1);
 }
