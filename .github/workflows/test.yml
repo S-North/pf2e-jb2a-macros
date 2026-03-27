@@ -4,11 +4,15 @@ on:
   pull_request:
     paths:
       - "module/autorec.json"
+      - "scripts/combine-animations.mjs"
       - ".github/check-autorec.js"
+      - ".github/workflows/test.yml"
   push:
     paths:
-      - ".github/check-autorec.js"
       - "module/autorec.json"
+      - "scripts/combine-animations.mjs"
+      - ".github/check-autorec.js"
+      - ".github/workflows/test.yml"
 
 jobs:
   build:
@@ -27,7 +31,7 @@ jobs:
         run: npm install @actions/core
 
       - name: Combine Animation Files
-        run: node ./scripts/combine-animations.mjs
+        run: node scripts/combine-animations.mjs
 
       - name: Test
         run: node .github/check-autorec.js
