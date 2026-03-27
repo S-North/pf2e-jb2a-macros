@@ -192,5 +192,12 @@
             "unbindVisibility": true,
             "zIndex": 1
         }
+    },
+    "metaData": {
+        "name": "PF2e Animations",
+        "moduleVersion": "2.20.0",
+        "version": 2200,
+        "label": "Unarmed Strike",
+        "menu": "melee"
     }
 }

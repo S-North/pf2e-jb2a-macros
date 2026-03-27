@@ -187,9 +187,9 @@
         }
     },
     "metaData": {
-        "name": "PF2e Animation Macros",
-        "version": 12,
-        "moduleVersion": "2.6.6",
+        "name": "PF2e Animations",
+        "moduleVersion": "2.20.0",
+        "version": 2200,
         "label": "Protect Companion",
         "menu": "ontoken"
     }

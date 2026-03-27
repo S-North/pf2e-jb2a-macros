@@ -1,9 +1,9 @@
 {
     "label": "Summoning Animation Template",
     "metaData": {
-        "name": "PF2e Animation Macros",
-        "version": 284,
-        "moduleVersion": "2.8.4",
+        "name": "PF2e Animations",
+        "moduleVersion": "2.20.0",
+        "version": 2200,
         "label": "Summoning Animation Template",
         "menu": "ontoken"
     },
