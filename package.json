@@ -9,6 +9,6 @@
     "extract": "node ./build/extract.mjs",
     "combine": "node ./scripts/combine-animations.mjs",
     "split": "node ./scripts/split-animations.mjs",
-    "test": "node ./scripts/check-autorec.mjs"
+    "test": "node ./scripts/test-animations.mjs"
   }
 }

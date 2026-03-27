@@ -5,13 +5,13 @@ on:
     paths:
       - "module/autorec.json"
       - "scripts/combine-animations.mjs"
-      - ".github/check-autorec.js"
+      - "scripts/test-animations.mjs"
       - ".github/workflows/test.yml"
   push:
     paths:
       - "module/autorec.json"
       - "scripts/combine-animations.mjs"
-      - ".github/check-autorec.js"
+      - "scripts/test-animations.mjs"
       - ".github/workflows/test.yml"
 
 jobs:
