@@ -1,3 +1,6 @@
+# Version 2.20.2
+- Updated animations to use Sequencer DB paths instead of file paths. (Thanks @ChasarooniZ!)
+
 # Version 2.20.1
 - Moved settings.js to the top of module.json esmodules.
 - Fixed sf2e compatibility.
