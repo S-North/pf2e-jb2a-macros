@@ -202,8 +202,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Ant Haul",
         "menu": "ontoken"
     }

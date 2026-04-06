@@ -18,7 +18,7 @@
         "sound": {
             "enable": true,
             "delay": 0,
-            "file": "modules/psfx-patreon/library/conditions/boon/boon-013-01.ogg",
+            "file": "psfx.1st-level-spells.detect-magic.v1.006",
             "repeat": 1,
             "repeatDelay": 250,
             "startTime": 0,
@@ -181,8 +181,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Warped Terrain",
         "menu": "templatefx"
     }

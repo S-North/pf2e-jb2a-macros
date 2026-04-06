@@ -47,7 +47,7 @@
         "sound": {
             "delay": 0,
             "enable": true,
-            "file": "modules/psfx-patreon/library/magic-signs/circles/v1/enchantment-magic-sign-circle-outro.ogg",
+            "file": "psfx.magic-signs.circle.v1.enchantment.outro",
             "startTime": 0,
             "volume": 1,
             "repeat": 1,
@@ -63,7 +63,7 @@
         }
     },
     "secondary": {
-        "enable": true,
+        "enable": false,
         "options": {
             "addTokenWidth": false,
             "anchor": "0.5",
@@ -188,8 +188,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Agonizing Despair",
         "menu": "ontoken"
     }

@@ -28,7 +28,7 @@
         "sound": {
             "delay": 0,
             "enable": true,
-            "file": "modules/psfx-patreon/library/5th-level-spells/cone-of-cold/v1/cone-of-cold-00.ogg",
+            "file": "psfx.5th-level-spells.cone-of-cold.v1.001",
             "startTime": 0,
             "volume": 1,
             "repeat": 1,
@@ -169,8 +169,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Cone of Cold",
         "menu": "templatefx"
     }

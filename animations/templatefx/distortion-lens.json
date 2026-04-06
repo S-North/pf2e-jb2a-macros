@@ -13,15 +13,16 @@
             "variant": "01",
             "color": "darkgreen",
             "enableCustom": true,
-            "customPath": "modules/jb2a_patreon/Library/5th_Level/Wall_Of_Force/WallOfForce_01_Blue_V_200x25.webm"
+            "customPath": "jb2a.wall_of_force.vertical.blue"
         },
         "sound": {
-            "enable": false,
+            "enable": true,
             "delay": 0,
             "repeat": 1,
             "repeatDelay": 250,
             "startTime": 0,
-            "volume": 0.75
+            "volume": 0.75,
+            "file": "psfx.1st-level-spells.detect-magic.v1.004"
         },
         "options": {
             "contrast": 0,
@@ -180,8 +181,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Distortion Lens",
         "menu": "templatefx"
     }

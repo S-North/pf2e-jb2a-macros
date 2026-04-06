@@ -69,7 +69,7 @@
         "sound": {
             "delay": 0,
             "enable": true,
-            "file": "modules/psfx-patreon/library/impacts/magicaleffects/fire/meleeattack-impacts-magicaleffects-fire-00.ogg",
+            "file": "psfx.casting.fire-side.001.4",
             "startTime": 0,
             "volume": 1,
             "repeat": 1,
@@ -129,7 +129,7 @@
             "volume": 1,
             "repeat": 1,
             "repeatDelay": 250,
-            "file": "modules/psfx-patreon/library/casting/fire/cast-fire-03.ogg"
+            "file": "psfx.casting.fire.001"
         }
     },
     "source": {
@@ -211,8 +211,8 @@
     },
     "metaData": {
         "name": "PF2e Animations",
-        "moduleVersion": "2.20.0",
-        "version": 2200,
+        "moduleVersion": "2.20.1",
+        "version": 2201,
         "label": "Fire Ray",
         "menu": "range"
     }
