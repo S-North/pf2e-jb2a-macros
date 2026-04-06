@@ -3,12 +3,14 @@ name: Test Autorec
 on:
   pull_request:
     paths:
+      - "animations"
       - "module/autorec.json"
       - "scripts/combine-animations.mjs"
       - "scripts/test-animations.mjs"
       - ".github/workflows/test.yml"
   push:
     paths:
+      - "animations"
       - "module/autorec.json"
       - "scripts/combine-animations.mjs"
       - "scripts/test-animations.mjs"
