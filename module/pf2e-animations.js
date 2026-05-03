@@ -801,7 +801,7 @@ pf2eAnimations.crosshairs = async function crosshairs(
     rememberControlled: true,
   };
 
-  mergeObject(crosshairConfig, opts.crosshairConfig);
+  foundry.utils.mergeObject(crosshairConfig, opts.crosshairConfig);
 
   crosshairConfig.ogIcon = crosshairConfig.icon;
 

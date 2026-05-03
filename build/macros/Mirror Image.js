@@ -12,7 +12,7 @@ if (args.length === 0) {
 
   const ITEM_UUID = `Compendium.pf2e-jb2a-macros.${game.system.id}-actions.15XurJzUEax6FhA7` // Mirror Image
   const source = (await fromUuid(ITEM_UUID)).toObject()
-  source.flags = mergeObject(source.flags ?? {}, {
+  source.flags = foundry.utils.mergeObject(source.flags ?? {}, {
     core: { sourceId: ITEM_UUID },
   })
 

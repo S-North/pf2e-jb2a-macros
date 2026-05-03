@@ -11,7 +11,7 @@ if (!args || args.length === 0) {
 
   const ITEM_UUID = "Compendium.pf2e.feat-effects.BCyGDKcplkJiSAKJ" // Stance: Stumbling Stance
   const source = (await fromUuid(ITEM_UUID)).toObject()
-  source.flags = mergeObject(source.flags ?? {}, {
+  source.flags = foundry.utils.mergeObject(source.flags ?? {}, {
     core: { sourceId: ITEM_UUID },
   })
 

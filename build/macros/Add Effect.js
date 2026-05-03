@@ -34,7 +34,7 @@ if (!source) {
 }
 
 source = (await fromUuid(ITEM_UUID)).toObject()
-source.flags = mergeObject(source.flags ?? {}, {
+source.flags = foundry.utils.mergeObject(source.flags ?? {}, {
   core: { sourceId: ITEM_UUID },
 })
 

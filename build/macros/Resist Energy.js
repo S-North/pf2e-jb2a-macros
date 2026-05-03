@@ -11,7 +11,7 @@ if (!args.length) {
 
   const ITEM_UUID = "Compendium.pf2e.spell-effects.con2Hzt47JjpuUej" // Spell Effect: Resist Energy
   const source = (await fromUuid(ITEM_UUID)).toObject()
-  source.flags = mergeObject(source.flags ?? {}, {
+  source.flags = foundry.utils.mergeObject(source.flags ?? {}, {
     core: { sourceId: ITEM_UUID },
   })
 
